@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VideoNoleggio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="image/icon.png" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/lib/md5.min.js"></script>
+    <script type="text/javascript" src="js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <script type="text/javascript" src="js/lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-1.6.5.min.js"></script>
+    <script type="text/javascript" src="js/lib/popper.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap-4.0.0.min.js"></script>
+    <script type="text/javascript"
+        src="js/lib/angular-animate-1.7.2.min.js"></script>
+    <script type="text/javascript"
+        src="js/lib/angular-route-1.6.9.min.js"></script>
+    <script type="text/javascript"
+        src="js/lib/angular-cookies-1.6.5.min.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>
+    <script type="text/javascript" src="js/controller/addFilmController.js"></script>
+
+    
+    
+</head>
+<body ng-app="videoNoleggio">
+
+    <div data-ng-include="'pages/menu.html'"></div> <!--tutte le pagine che usano questa directiva restano come template , ovunque tu vada la visualizzerai-->
+    <div class="d-flex vertical-center-container-fluid justify-content-center" data-ng-include="'pages/carrousel.html'"></div>
+    
+    <div ng-view></div>
+   
+</body>
+
+</html>

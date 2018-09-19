@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    <hibernate-mapping>
+        <class name="com.beije.videoNoleggio.model.Persona" table="PERSONA">
+            <id name="id" type="int" column="id"> <!-- id, della tabella -->
+            </id>
+            <property name="nome" column="NOME" type="string" /> <!-- property attributi  che dobbiamo recuperare sul db che corrispondono al mdoel -->
+            <property name="cognome" column="COGNOME" type="string" />
+            <property name="email" column="EMAIL" type="string" />
+            <property name="indirizzo" column="INDIRIZZO" type="string" />
+            
+            <bag name="elenco_films" table="noleggiofilm" lazy="false" >
+            <key>
+                <column name="id_persona" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.beije.videoNoleggio.model.Film">
+                <column name="id_film" not-null="true" />
+            </many-to-many>
+        </bag> 
+         </class>
+         
+    
+    </hibernate-mapping>
