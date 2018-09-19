@@ -1,3 +1,4 @@
+
 app.controller("addFilmController", function($scope, $rootScope, $location, $http , $timeout) {
     $scope.messaggio = "";
     $scope.showAlert = false;
@@ -49,6 +50,7 @@ app.controller("addFilmController", function($scope, $rootScope, $location, $htt
 
         $scope.mostraMessaggio = $timeout(function() {
             $scope.showAlert = false;
+            $scope.error = false;
         }, 3000);
 
       
