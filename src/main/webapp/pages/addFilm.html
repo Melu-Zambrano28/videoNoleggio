@@ -7,10 +7,12 @@
         type="text" name="nome" 
         class="form-control" 
         placeholder="Nome Film" 
+        ng-maxlength="50"
         ng-model="nome" 
-        ng-class="{'border border-danger': addFilm.nome.$invalid , border border-primary : addFilm.nome.$submitted }"  
+        ng-class="{'form-control is-invalid' : addFilm.nome.$error.maxlength   , 'form-control'  : addFilm.nome.$dirty }"
         required/>
-        <span class="text-danger" ng-show="addFilm.nome.$submitted && addFilm.nome.$invalid">Campo obbligatorio!</span>
+        <span class="text-danger " ng-show="addFilm.nome.$dirty && addFilm.nome.$error.maxlength">Hai superato il limite massimo di caratteri!</span>
+       
       </div>  
     </div>
     <div class="form-group">
@@ -22,11 +24,10 @@
       ng-model="descrizione"
       ng-minlength="5" 
       ng-maxlength="50"
-      ng-class="{'border-danger': addFilm.descrizione.$invalid, border border-primary: addFilm.descrizione.$submitted }"   
+      ng-class="{'form-control is-invalid' : addFilm.descrizione.$error.minlength || addFilm.descrizione.$error.maxlength   , 'form-control'  : addFilm.descrizione.$dirty }"
       required/>
-      <span class="text-danger" ng-show="addFilm.descrizione.$submitted && addFilm.descrizione.$invalid">Campo Obligatorio</span>
-      <span class="text-danger" ng-show="addFilm.descrizione.$dirty && addFilm.descrizione.$error.minlength">Descrizione troppo caratteri</span>
-      <span class="text-danger" ng-show="addFilm.descrizione.$dirty && addFilm.descrizione.$error.maxlength">Hai superato il limite massimo di parole!</span>
+      <span class="text-danger" ng-show="addFilm.descrizione.$dirty && addFilm.descrizione.$error.minlength">Descrizione troppo corta</span>
+      <span class="text-danger" ng-show="addFilm.descrizione.$dirty && addFilm.descrizione.$error.maxlength">Hai superato il limite massimo di caratteri!</span>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -34,18 +35,17 @@
         <input type="number"
         name="prezzo"
         min="0"
-        ng-class="{'border-danger': addFilm.prezzo.$invalid, border border-primary : addFilm.prezzo.$submitted }" 
+        ng-class="{'form-control is-invalid' : addFilm.prezzo.$error.number || addFilm.prezzo.$error.min   , 'form-control'  : addFilm.prezzo.$dirty }"
         class="form-control"  
         ng-model = "prezzo" 
         required/>
-        <span class="text-danger" ng-show="addFilm.prezzo.$submitted && addFilm.prezzo.$invalid">Campo Obligatorio</span>
         <span class="text-danger" ng-show="addFilm.prezzo.$error.number">Non è un numero</span>
         <span class="text-danger" ng-show="addFilm.prezzo.$error.min">Inserire solo numeri positivi </span>
       </div>
       <div class="form-group col-md-4">
         <label for="tipo" >Tipo: </label>
         <select class="form-control" ng-model = "tipo">
-          <option selected>Commedia</option>
+          <option selected value>Commedia</option>
           <option>Avventura</option>
           <option>Biografico</option>
           <option>Documentario</option>
@@ -62,9 +62,9 @@
         name="quantita"
         min="0"
         ng-model="quantita"
-        ng-class="{'border-danger': addFilm.quantita.$invalid , border border-primary : addFilm.quantita.$submitted }"  
+        ng-class="{'form-control is-invalid' : addFilm.quantita.$error.number || addFilm.quantita.$error.min   , 'form-control'  : addFilm.quantita.$dirty }"
         required/>
-        <span class="text-danger" ng-show="addFilm.quantita.$submitted && addFilm.quantita.$invalid">Campo Obligatorio</span>
+        
         <span class="text-danger" ng-show="addFilm.quantita.$error.number">Non è un numero</span>
         <span class="text-danger" ng-show="addFilm.quantita.$error.min">Inserire solo numeri positivi </span>
       </div>
@@ -80,6 +80,7 @@
   <button type="submit" 
   class="btn btn-primary" 
   ng-click="salvaFilm(); restData()" data-ng-disabled="addFilm.$invalid">Salva</button>
+  
    
 
     

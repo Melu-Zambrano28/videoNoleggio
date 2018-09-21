@@ -1,17 +1,19 @@
 
 app.controller("addFilmController", function($scope, $rootScope, $location, $http , $timeout) {
+    var film ;
     $scope.messaggio = "";
     $scope.showAlert = false;
     $scope.error = false;
     $scope.close = false; 
     $scope.class = '';
+    $scope.vm = this;
     
     
 
 
    $scope.salvaFilm = function(){
        var url = "/VideoNoleggio/controller/film/aggiungiFilm";
-        var film = {
+        film = {
             nome: $scope.nome,
             descrizione : $scope.descrizione,
             prezzo : $scope.prezzo,
@@ -51,7 +53,7 @@ app.controller("addFilmController", function($scope, $rootScope, $location, $htt
         $scope.mostraMessaggio = $timeout(function() {
             $scope.showAlert = false;
             $scope.error = false;
-        }, 3000);
+        }, 5000);
 
       
     }
