@@ -22,7 +22,7 @@
       ng-model="descrizione"
       ng-minlength="5" 
       ng-maxlength="50"
-      ng-class="{'border-danger': addFilm.descrizione.$invalid, border border-primary : addFilm.descrizione.$submitted }"   
+      ng-class="{'border-danger': addFilm.descrizione.$invalid, border border-primary: addFilm.descrizione.$submitted }"   
       required/>
       <span class="text-danger" ng-show="addFilm.descrizione.$submitted && addFilm.descrizione.$invalid">Campo Obligatorio</span>
       <span class="text-danger" ng-show="addFilm.descrizione.$dirty && addFilm.descrizione.$error.minlength">Descrizione troppo caratteri</span>

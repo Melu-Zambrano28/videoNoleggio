@@ -6,7 +6,7 @@
     <title>VideoNoleggio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="image/icon.png" />
-
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -33,7 +33,8 @@
 <body ng-app="videoNoleggio">
 
     <div data-ng-include="'pages/menu.html'"></div> <!--tutte le pagine che usano questa directiva restano come template , ovunque tu vada la visualizzerai-->
-    <div class="d-flex vertical-center-container-fluid justify-content-center" data-ng-include="'pages/carrousel.html'"></div>
+    <div class="d-flex vertical-center-container-fluid justify-content-center" 
+    data-ng-include="'pages/carrousel.html'"></div>
     
     <div ng-view></div>
    
