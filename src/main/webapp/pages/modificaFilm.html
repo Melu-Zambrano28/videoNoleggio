@@ -1,1 +1,32 @@
-<h1>Ciao da Modifica Film</h1>
+<div class="w-75 p-3" ng-controller="modificaFilmController">
+<h1>Modifica Film</h1>
+
+
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+    <div class="row">
+      <tr>
+        <th scope="col-4">Nome</th>
+        <th scope="col-4">Descrizione</th>
+        <th scope="col-4">Tipo</th>
+        <th scope="col-4">Prezzo</th>
+        <th scope="col-4">Quantità</th>
+        <th scope="col-4"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></th>
+        <th scope="col-4"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></th>
+      </tr>
+    </div>
+    </thead>
+    <tbody ng-repeat="film in listaFilm">
+      <tr>
+       
+        <td>{{film.nome}}</td>
+        <td>{{film.descrizione}}</td>
+        <td>{{film.tipo}}</td>
+        <td>{{film.prezzo}}</td>
+        <td>{{film.quantita}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

@@ -27,7 +27,7 @@ public class FilmController {
 			risposta.setMessage("Operazione eseguita");
 		}else {
 			
-			risposta.setMessage("Dato presente sul db");
+			risposta.setMessage("Dato presente sul database");
 			risposta.setStatus(true);
 		}
 		
