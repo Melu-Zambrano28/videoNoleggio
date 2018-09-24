@@ -11,19 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.beije.videoNoleggio.dao.FilmDao;
 import com.beije.videoNoleggio.model.Film;
+import com.beije.videoNoleggio.model.ResponseMessage;
 
 @RestController
 @RequestMapping("/film")
 public class FilmController {
 	
 	@RequestMapping(method = RequestMethod.POST, path="/aggiungiFilm")
-	public String aggiungiFilm(@RequestBody Film film) {
-		String risposta = "";
+	public ResponseMessage aggiungiFilm(@RequestBody Film film) {
+		ResponseMessage risposta  =   new ResponseMessage();
 		Film filmDb = FilmDao.trovaFilmByNome(film.getNome());
 		if(filmDb == null) {
 			FilmDao.inserisciFilm(film);
+			risposta.setStatus(false); //viene settato a False quando non ci sono errori
+			risposta.setMessage("Operazione eseguita");
 		}else {
-			risposta = "Questo campo è presente sul db";
+			
+			risposta.setMessage("Dato presente sul db");
+			risposta.setStatus(true);
 		}
 		
 		return risposta;

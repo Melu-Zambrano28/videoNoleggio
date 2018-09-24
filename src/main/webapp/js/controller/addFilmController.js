@@ -30,10 +30,23 @@ app.controller("addFilmController", function($scope, $rootScope, $location, $htt
 
 
                 if(response.status == 200){
-                    $scope.showAlert = true;
-                    $scope.class = 'alert alert-success alert-dismissible';
-                    $scope.messaggio = "Operazione eseguita!";
-                    console.log($response.data);
+
+
+                    //messagio di successo
+                    if(response.data.status ===  false){
+                        $scope.showAlert = true; 
+                        $scope.class = 'alert alert-success alert-dismissible';
+                        $scope.messaggio = response.data.message;
+                        console.log($response.data);
+
+                    }
+
+                    if(response.data.status){
+                        $scope.error = true;
+                        $scope.class = 'alert alert-danger';
+                        $scope.messaggio = response.data.message;
+                    }
+                   
 
                 }
 
