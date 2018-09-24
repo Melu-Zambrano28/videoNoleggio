@@ -2,11 +2,22 @@
     width: 100%;
     height: 20vw;
     object-fit: cover;
+    
 }
 
 .carousel-inner{
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.d-flex {
+    position: static;
+}
+
+
+.carousel{
+    max-height: 10%;
+    background-size: auto; 
 }
 
 input::-webkit-outer-spin-button,

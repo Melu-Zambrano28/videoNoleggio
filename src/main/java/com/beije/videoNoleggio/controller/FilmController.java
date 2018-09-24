@@ -17,9 +17,16 @@ import com.beije.videoNoleggio.model.Film;
 public class FilmController {
 	
 	@RequestMapping(method = RequestMethod.POST, path="/aggiungiFilm")
-	public void aggiungiFilm(@RequestBody Film film) {
-		FilmDao.inserisciFilm(film);
+	public String aggiungiFilm(@RequestBody Film film) {
+		String risposta = "";
+		Film filmDb = FilmDao.trovaFilmByNome(film.getNome());
+		if(filmDb == null) {
+			FilmDao.inserisciFilm(film);
+		}else {
+			risposta = "Questo campo è presente sul db";
+		}
 		
+		return risposta;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , path="/eliminaFilm")

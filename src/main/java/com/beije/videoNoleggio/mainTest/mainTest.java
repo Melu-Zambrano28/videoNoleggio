@@ -40,8 +40,11 @@ public class mainTest {
 		film.setPrezzo(23.50);
 		film.setQuantita(2);
 		
+		Film filbyName = FilmDao.trovaFilmByNome("matrix");
+		System.out.println("Solo film "+filbyName.toString());
+		
 		//FilmDao.inserisciFilm(film);
-		List<Film> elencoFilm = FilmDao.findAllFilm();
+		//List<Film> elencoFilm = FilmDao.findAllFilm();
 		
 		
 		

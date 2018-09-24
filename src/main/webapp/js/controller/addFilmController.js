@@ -33,16 +33,17 @@ app.controller("addFilmController", function($scope, $rootScope, $location, $htt
                     $scope.showAlert = true;
                     $scope.class = 'alert alert-success alert-dismissible';
                     $scope.messaggio = "Operazione eseguita!";
+                    console.log($response.data);
 
                 }
 
           
-        }   
-        
-        ).catch(function(error){
+        }  , 
+        function(response) {
             $scope.error = true;
             $scope.class = 'alert alert-danger';
-            $scope.messaggio = "Operazione non eseguita controlla i campi";
+            //$scope.messaggio = $response.data;
+            $scope.messaggio = "Operazione non eseguita!";
         });
 
         $scope.getAlertClass = function() {

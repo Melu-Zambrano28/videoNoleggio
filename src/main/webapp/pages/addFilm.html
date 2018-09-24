@@ -11,7 +11,7 @@
         ng-model="nome" 
         ng-class="{'form-control is-invalid' : addFilm.nome.$error.maxlength   , 'form-control'  : addFilm.nome.$dirty }"
         required/>
-        <span class="text-danger " ng-show="addFilm.nome.$dirty && addFilm.nome.$error.maxlength">Hai superato il limite massimo di caratteri!</span>
+        <span class="text-danger" ng-show="addFilm.nome.$dirty && addFilm.nome.$error.maxlength">Hai superato il limite massimo di caratteri!</span>
        
       </div>  
     </div>
@@ -45,7 +45,7 @@
       <div class="form-group col-md-4">
         <label for="tipo" >Tipo: </label>
         <select class="form-control" ng-model = "tipo">
-          <option selected value>Commedia</option>
+          <option selected>Commedia</option>
           <option>Avventura</option>
           <option>Biografico</option>
           <option>Documentario</option>

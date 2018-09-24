@@ -51,6 +51,13 @@ public class FilmDao {
 		
 	}
 	
+	public static Film trovaFilmByNome(String nome) {
+		sessionFactory = HibernateConnectionSingleton.getSessionFactory(); //con questo ottengo solo na connection
+		session =  sessionFactory.openSession();
+		Film film  = session.createQuery("from Film where nome=?1" , Film.class).setParameter(1, nome).uniqueResult();
+		return film;
+	}
+	
 	
 	public static void deleteFilm(int id) {
 		sessionFactory = HibernateConnectionSingleton.getSessionFactory(); //con questo ottengo solo na connection
