@@ -55,7 +55,6 @@ app.controller("addFilmController", function($scope, $rootScope, $location, $htt
         function(response) {
             $scope.error = true;
             $scope.class = 'alert alert-danger';
-            //$scope.messaggio = $response.data;
             $scope.messaggio = "Operazione non eseguita!";
         });
 

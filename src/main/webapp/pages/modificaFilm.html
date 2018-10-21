@@ -7,6 +7,7 @@
     <thead class="thead-dark">
     <div class="row">
       <tr>
+          <th scope="col-4">id</th>
         <th scope="col-4">Nome</th>
         <th scope="col-4">Descrizione</th>
         <th scope="col-4">Tipo</th>
@@ -19,14 +20,14 @@
     </thead>
     <tbody ng-repeat="film in listaFilm">
       <tr>
-       
+        <td>{{film.id}}</td>
         <td>{{film.nome}}</td>
         <td>{{film.descrizione}}</td>
         <td>{{film.tipo}}</td>
         <td>{{film.prezzo}}</td>
         <td>{{film.quantita}}</td>
         <td>
-            <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
+            <button id="modificaFilm"  type="button" data-toggle="modal" data-target="#exampleModalCenter" ng-click="setFilmId(film.id)">
                 <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
             </button>
         </td>
@@ -34,7 +35,14 @@
       </tr>
     </tbody>
   </table>
-  <div class="d-flex vertical-center-container-fluid justify-content-center" 
-  data-ng-include="'pages/modalModificaFilm.html'"></div>
+
+  
+  <div ng-class="class" role="alert" ng-show="error">
+    <button type="button" class="close"  ng-click="error=false">&times;</button>
+      {{messaggio}}
+    </div>
+
+  <div ng-controller ="modificaFilmController" class="d-flex vertical-center-container-fluid justify-content-center" 
+      ng-include="'pages/modalModificaFilm.html'"></div>
   
 </div>

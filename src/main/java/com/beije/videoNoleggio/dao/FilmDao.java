@@ -31,13 +31,13 @@ public class FilmDao {
 		sessionFactory = HibernateConnectionSingleton.getSessionFactory(); //con questo ottengo solo na connection
 		session =  sessionFactory.openSession();
 		Film filmDb =  session.load(Film.class, id); //prima carico la persona che viene del db
-		filmDb.setNome(film.getDescrizione());
+		filmDb.setNome(film.getNome());
 		filmDb.setDescrizione(film.getDescrizione());
 		filmDb.setPrezzo(film.getPrezzo());
 		filmDb.setQuantita(film.getQuantita());
 		filmDb.setTipo(film.getTipo());		
 		transaction = session.beginTransaction();
-		session.merge(film);
+		session.merge(filmDb);
 		transaction.commit();
 		session.close();
 		
