@@ -32,6 +32,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
             $scope.messaggio = "Si è verificato un problema interno";
           
         });
+
     }
 
 
@@ -83,11 +84,17 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
         
         function(response){
             $scope.getResponseMessage(response.status);
-            $scope.resetDataModificata();
             console.log("No");
 
           
         });
+
+        //fa sparire i possibili messaggi di risposta
+        $scope.mostraMessaggio = $timeout(function() {
+            $scope.showAlert = false;
+            $scope.error = false;
+        }, 3000);
+
     }
 
 
@@ -118,7 +125,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
 
    
-
+    
 
    
 
