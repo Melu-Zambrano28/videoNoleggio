@@ -3,6 +3,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
     var url = "/VideoNoleggio/controller/film/listaFilm";
     var eliminaUrl="/VideoNoleggio/controller/film/eliminaFilm?id=";
     var modificaFilmUrl = "/VideoNoleggio/controller/film/aggiornaFilm?id=";
+    var trovaFilmByIdUrl="/VideoNoleggio/controller/film/trova-film-by-id?id=";
     $scope.click = false;
     $scope.listaFilm = [];
     $scope.filmId;
@@ -30,6 +31,29 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
             $scope.error = true;
             $scope.class = 'alert alert-danger';
             $scope.messaggio = "Si è verificato un problema interno";
+          
+        });
+
+    }
+
+
+    $scope.trovaFilmById=  function(){
+        
+        $http.get(trovaFilmByIdUrl+$scope.filmId).then(function(response){
+                $scope.nomeFilmPrimaModifica = response.data.nome;
+                $scope.descrizioneFilmPrimaModifica = response.data.descrizione;
+                $scope.prezzoFilmPrimaModifica = response.data.prezzo;
+                $scope.tipoFilmPrimaModifica = response.data.tipo;
+                $scope.quantitaFilmPrimaModifica = response.data.quantita;
+        
+            
+            console.log("si");
+           
+
+        },
+        
+        function(response){
+            console.log("no");
           
         });
 
@@ -66,9 +90,8 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
     
     $scope.aggiornaFilm =  function(){
-
         filmCampiModificati = {
-            nome: $scope.modificaNome,
+            nome: $scope.nomeFilmPrimaModifica,
             descrizione : $scope.modificaDescrizione,
             prezzo : $scope.modificaPrezzo,
             tipo : $scope.modificaTipo,
@@ -97,6 +120,9 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
     }
 
+   
+    
+
 
     $scope.getResponseMessage = function(response){
 
@@ -113,14 +139,17 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
     }
 
+
+
     $scope.resetDataModificata =  function(){
-        $scope.modificaNome = "";
+        
         $scope.modificaDescrizione = "";
         $scope.modificaPrezzo = "";
         $scope.modificaTipo = "";
         $scope.modificaQuantita = "";
     }
 
+    
 
 
 

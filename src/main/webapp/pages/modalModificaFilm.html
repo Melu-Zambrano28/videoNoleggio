@@ -12,19 +12,19 @@
             
 
                 <form name="modificaFilm" required>
-                        <div class="form-row">
+                        <div class="form-row"  id="modificaNome">
                           <div class="form-group col-md-6">
                             <label>Nome del film</label>
-                            <input 
-                            
+                            <input
                             type="text" name="nome" 
+                            ng-disabled="true"
+                            ng-value="nomeFilmPrimaModifica"
                             class="form-control" 
                             placeholder="Nome Film" 
-                            value="ciao"
                             ng-maxlength="50"            
                             ng-model="$parent.modificaNome"  
-                            ng-class="{'form-control is-invalid' : modificaFilm.nome.$error.maxlength   , 'form-control'  : modificaFilm.nome.$dirty }"
-                            required/>
+                            ng-class="{'form-control is-invalid' : modificaFilm.nome.$error.maxlength   , 'form-control'  : modificaFilm.nome.$dirty}"
+                            />
                             <span class="text-danger" ng-show="modificaFilm.nome.$dirty && modificaFilm.nome.$error.maxlength">Hai superato il limite massimo di caratteri!</span>
                            
                           </div>  
@@ -33,6 +33,7 @@
                           <label >Descrizione: </label>
                           <input type="text" 
                           name="descrizione"
+                          ng-value="descrizioneFilmPrimaModifica"
                           class="form-control" 
                           placeholder="Descrizione" 
                           ng-model="$parent.modificaDescrizione"
@@ -47,6 +48,7 @@
                           <div class="form-group col-md-6">
                             <label for="inputCity">Prezzo: </label>
                             <input type="number"
+                            ng-value = "prezzoFilmPrimaModifica"
                             name="prezzo"
                             placeholder="Prezzo" 
                             min="0"
@@ -59,9 +61,10 @@
                           </div>
                           <div class="form-group col-md-4">
                             <label for="tipo" >Tipo: </label>
-                            <select class="form-control" ng-model = "$parent.modificaTipo">
-                              <option value=""  disabled selected>Seleziona</option>
-                              <option selected>Commedia</option>
+                            <select class="form-control" 
+                              ng-model = "$parent.modificaTipo">
+                              <option  value="" selected disabled hidden>{{tipoFilmPrimaModifica}}</option>
+                              <option>Commedia</option>
                               <option>Avventura</option>
                               <option>Biografico</option>
                               <option>Documentario</option>
@@ -76,6 +79,7 @@
                             <input type="number" 
                             class="form-control" 
                             min="0"
+                            ng-value="quantitaFilmPrimaModifica"
                             ng-model="$parent.modificaQuantita"
                             ng-class="{'form-control is-invalid' : modificaFilm.quantita.$error.number || modificaFilm.quantita.$error.min   , 'form-control'  : modificaFilm.quantita.$dirty }"
                             required/>
@@ -92,8 +96,8 @@
                       {{messaggio}}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="resetDataModificata()"> Chiudi</button>
-                        <button type="button" class="btn btn-primary" ng-click ="aggiornaFilm()" data-ng-disabled="modificaFilm.$invalid">Modifica</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Chiudi</button>
+                        <button type="button" class="btn btn-primary" ng-click ="aggiornaFilm()"  data-dismiss="modal" data-ng-disabled="modificaFilm.$invalid">Modifica</button>
                     </div>  
                         
                 </form>
