@@ -10,7 +10,10 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
     $scope.error = false;
     $scope.showAlert = false;
     $scope.class="";
+    $rootScope.enable = false;
     $scope.messaggio = "";
+
+
    
     
    
@@ -100,11 +103,13 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
         $http.post((modificaFilmUrl+$scope.filmId), filmCampiModificati).then(function(response){
             $scope.getResponseMessage(response.status);
             $scope.resetDataModificata();
+            location.reload();
             
         },
         
         function(response){
             $scope.getResponseMessage(response.status);
+          
             console.log("No");
 
           
@@ -114,6 +119,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
         $scope.mostraMessaggio = $timeout(function() {
             $scope.showAlert = false;
             $scope.error = false;
+            $scope.enable = true;
         }, 3000);
 
     }
