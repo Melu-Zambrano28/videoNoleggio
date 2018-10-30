@@ -21,16 +21,13 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
     $scope.getListFilm =  function(){
         $http.get(url).then(function(response){
             $scope.listaFilm = response.data;
-
             console.log($scope.listaFilm);
            
 
         },
         
         function(response){
-            $scope.error = true;
-            $scope.class = 'alert alert-danger';
-            $scope.messaggio = "Si è verificato un problema interno";
+            $scope.getResponseMessage();
           
         });
 
@@ -70,12 +67,14 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
         $http.get(eliminaUrl+$scope.id).then(function(response){
             console.log(response.data);
+            $scope.getResponseMessage();
            
 
         },
         
         function(response){
-           console.log("Non eliminato");
+            $scope.getResponseMessage();
+            console.log("Non eliminato");
           
         });
 
@@ -101,8 +100,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
         $http.post((modificaFilmUrl+$scope.filmId), filmCampiModificati).then(function(response){
             $scope.getResponseMessage(response.status);
             $scope.resetDataModificata();
-           
-
+            
         },
         
         function(response){
@@ -155,7 +153,6 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
    
     
-
    
 
 });
