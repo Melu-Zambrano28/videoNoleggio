@@ -25,11 +25,16 @@
         <td>{{film.prezzo}}</td>
         <td>{{film.quantita}}</td>
         <td>
-            <button id="modificaFilm"  type="button" data-toggle="modal" data-target="#exampleModalCenter" ng-click="setFilmId(film.id); trovaFilmById()">
+            <button id="modificaFilm"  type="button" data-toggle="modal" data-target="#modalModificaFilm" ng-click="setFilmId(film.id); trovaFilmById();">
                 <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
             </button>
         </td>
-        <td><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></td>
+        
+        <td>
+            <button id="eliminaFilm"  type="button" ng-click="setFilmId(film.id); eliminaFilm();">
+                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+            </button>
+         
       </tr>
     </tbody>
   </table>

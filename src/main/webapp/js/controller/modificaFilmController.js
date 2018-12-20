@@ -68,10 +68,10 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
     $scope.eliminaFilm = function(){
 
-        $http.get(eliminaUrl+$scope.id).then(function(response){
+        $http.get(eliminaUrl+$scope.filmId).then(function(response){
             console.log(response.data);
             $scope.getResponseMessage();
-           
+            location.reload();
 
         },
         
