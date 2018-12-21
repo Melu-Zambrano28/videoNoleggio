@@ -1,5 +1,14 @@
-app.controller("modificaFilmController", function($scope, $rootScope, $location, $http , $timeout) {
+app.controller("filmController", function($scope, $rootScope, $location, $http , $timeout) {
 
+    var film ;
+    $scope.messaggio = "";
+    $scope.showAlert = false;
+    $scope.error = false;
+    $scope.close = false; 
+    $scope.class = '';
+    $scope.vm = this;
+
+    
     var url = "/VideoNoleggio/controller/film/listaFilm";
     var eliminaUrl="/VideoNoleggio/controller/film/eliminaFilm?id=";
     var modificaFilmUrl = "/VideoNoleggio/controller/film/aggiornaFilm?id=";
@@ -7,19 +16,84 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
     $scope.click = false;
     $scope.listaFilm = [];
     $scope.filmId;
-    $scope.error = false;
     $scope.showAlert = false;
-    $scope.class="";
     $rootScope.enable = false;
-    $scope.messaggio = "";
 
-
-   
     
-   
 
+    $scope.salvaFilm = function(){
+        var url = "/VideoNoleggio/controller/film/aggiungiFilm";
+         film = {
+             nome: $scope.nome,
+             descrizione : $scope.descrizione,
+             prezzo : $scope.prezzo,
+             tipo : $scope.tipo,
+             quantita: $scope.quantita
+ 
+ 
+         }
+ 
+         $http.post(url,film)
+             
+         .then(function(response) {
+             $response = response;
+ 
+ 
+                 if(response.status == 200){
+ 
+ 
+                     //messagio di successo
+                     if(response.data.status ===  false){
+                         $scope.showAlert = true; 
+                         $scope.class = 'alert alert-success alert-dismissible';
+                         $scope.messaggio = response.data.message;
+                         console.log($response.data);
+ 
+                     }
+ 
+                     if(response.data.status){
+                         $scope.error = true;
+                         $scope.class = 'alert alert-danger';
+                         $scope.messaggio = response.data.message;
+                     }
+                    
+ 
+                 }
+ 
+           
+         }  , 
+         function(response) {
+             $scope.error = true;
+             $scope.class = 'alert alert-danger';
+             $scope.messaggio = "Operazione non eseguita!";
+         });
+ 
+         $scope.getAlertClass = function() {
+             return 'alert-success';
+         }
+ 
+ 
+         $scope.mostraMessaggio = $timeout(function() {
+             $scope.showAlert = false;
+             $scope.error = false;
+         }, 5000);
+ 
+       
+     }
+ 
+     $scope.resetData = function(){
+         $scope.showAlert = false;
+         $scope.error = false;
+         $scope.nome = "";
+         $scope.descrizione="";
+         $scope.prezzo="";
+         $scope.tipo="";
+         $scope.quantita="";
+ 
+     }
+ 
 
-
+     
     //metodo http prende due funzioni per le richiete , una per gestire i successi e i ko
     $scope.getListFilm =  function(){
         $http.get(url).then(function(response){
@@ -47,13 +121,13 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
                 $scope.quantitaFilmPrimaModifica = response.data.quantita;
         
             
-            console.log("si");
+            console.log("TrovaFilByID: "+response);
            
 
         },
         
         function(response){
-            console.log("no");
+            console.log("TrovaFilByID: Film non trovato");
           
         });
 
@@ -77,6 +151,7 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
         
         function(response){
             $scope.getResponseMessage();
+            
             console.log("Non eliminato");
           
         });
@@ -157,8 +232,8 @@ app.controller("modificaFilmController", function($scope, $rootScope, $location,
 
 
 
-   
-    
-   
+
+
+
 
 });

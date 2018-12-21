@@ -1,4 +1,4 @@
-<div  style="margin-top: 50px;" class="d-flex vertical-center-container-fluid justify-content-center" ng-controller="addFilmController">
+<div  style="margin-top: 50px;" class="d-flex vertical-center-container-fluid justify-content-center" ng-controller="filmController">
 <form name="addFilm" required>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -82,7 +82,7 @@
 
   <button type="submit" 
   class="btn btn-primary" 
-  ng-click="salvaFilm(); restData()" data-ng-disabled="addFilm.$invalid">Salva</button>
+  ng-click="salvaFilm(); resetData()" data-ng-disabled="addFilm.$invalid">Salva</button>
   
    
 
