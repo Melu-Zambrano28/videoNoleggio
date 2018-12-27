@@ -7,8 +7,8 @@ app.config(function($routeProvider) {
         
     })
 
-    .when("/modificaFilm", {
-        templateUrl : "pages/modificaFilm.html",
+    .when("/gestioneFilm", {
+        templateUrl : "pages/gestioneFilm.html",
        
         
     })
